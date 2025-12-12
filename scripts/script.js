@@ -40,7 +40,6 @@ const gallery = {
     "Madelyn Cline": ["EB Garamond", 18, "2021-08-01"],
   },
 };
-const basicLink = "https://shoneal.github.io/contentmode/images/";
 
 for (const section in gallery) {
   gallery[section] = Object.fromEntries(
@@ -50,6 +49,7 @@ for (const section in gallery) {
   );
 }
 
+const basicLink = "https://shoneal.github.io/contentmode/images/";
 const logo = "https://shoneal.github.io/contentmode/images/logo.png";
 const specialLogo =
   "https://shoneal.github.io/contentmode/images/special-logo.jpg";
@@ -138,22 +138,24 @@ document.addEventListener("click", (e) => {
   sectionFull.style.display = "block";
   headerButton.classList.replace("button-is_active", "button-is_not_active");
 
-  if (sectionName === "covers") {
+  if (sectionName === "covers")
     sectionFullList.classList.add("full_list_covers");
-  }
 
-  if (sectionName === "CONTENTs man") {
-    const img = Object.assign(document.createElement("img"), {
-      src: specialLogo,
-      alt: "Special Logo",
-      className: "section_full_logo",
-    });
-    sectionFullTitle.appendChild(img);
+  const isSpecial = sectionName === "CONTENTs man";
+  if (isSpecial) {
+    sectionFullTitle.appendChild(
+      Object.assign(document.createElement("img"), {
+        src: specialLogo,
+        alt: "Special Logo",
+        className: "section_full_logo",
+      })
+    );
   } else {
-    const h2 = Object.assign(document.createElement("h2"), {
-      textContent: sectionName,
-    });
-    sectionFullTitle.appendChild(h2);
+    sectionFullTitle.appendChild(
+      Object.assign(document.createElement("h2"), {
+        textContent: sectionName,
+      })
+    );
   }
 
   const items = gallery[sectionName];
@@ -161,8 +163,10 @@ document.addEventListener("click", (e) => {
     for (const [name] of Object.entries(items)) {
       const li = document.createElement("li");
       li.dataset.name = name;
+
+      const path = isSpecial ? sectionName.split(" ")[1] : sectionName;
       const img = Object.assign(document.createElement("img"), {
-        src: `${basicLink}${sectionName}/covers/768/${formatName(name)}.jpg`,
+        src: `${basicLink}${path}/covers/768/${formatName(name)}.jpg`,
         alt: `${name} Cover`,
       });
 
