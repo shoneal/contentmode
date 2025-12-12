@@ -1,0 +1,108 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+a {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+li,
+a {
+  color: currentColor;
+  text-decoration: none;
+  list-style: none;
+}
+
+img,
+svg,
+video {
+  display: block;
+  pointer-events: none;
+}
+
+body {
+  margin: 0 auto;
+  border: 1px solid tomato;
+  padding: 8.25rem 10px;
+  color: black;
+  max-inline-size: 1500px;
+  inline-size: 100%;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid green;
+  padding: 10px;
+  inline-size: 100%;
+}
+
+button {
+  margin: 0;
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.header_button {
+  margin: 20px auto;
+  padding: 10px;
+  inline-size: 21%;
+  max-inline-size: 374px;
+}
+
+.header_logo {
+  inline-size: 100%;
+}
+
+.navigation {
+  padding: 10px;
+  inline-size: 79%;
+}
+
+.navigation_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 1rem;
+  margin-block: 20px;
+}
+
+.navigation_button {
+  font-size: 14pt;
+}
+
+@media (prefers-color-scheme: dark), .dark-theme {
+  body {
+    color: white;
+    background: #121212;
+  }
+
+  .header_logo {
+    filter: invert(100%);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    padding-block: 2.5rem 5.5rem;
+  }
+
+  .header_button,
+  .navigation {
+    inline-size: 100%;
+  }
+}
