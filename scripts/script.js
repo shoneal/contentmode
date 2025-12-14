@@ -8,6 +8,7 @@ const gallery = {
     "Demi Singleton": ["gil-sans", 30, "2024-02-01"],
   },
   "CONTENTs man": {
+    "Noah Schnapp": ["Helvetica", 9, "2025-12-01"],
     "Corey Mylchreest": ["gil-sans", 8, "2025-08-01"],
     "Jason Isaacs": ["Impact, Chicago", 12, "2025-03-01"],
     "Alessandro Nivola": ["avenir-reg italic", 9, "2024-12-01"],
@@ -85,6 +86,17 @@ const recentBlock = document.querySelector(".recent");
 const recentTemplate = document.getElementById("recent-template");
 const formatName = (name) =>
   name.replace(/[^a-zA-Z\s]/g, "").replace(/\s+/g, "_");
+const isSpecialSection = (section) => section === "CONTENTs man"; // Специальная секция
+const buildImageCover = (sectionName, itemName) => {
+  const path = isSpecialSection(sectionName)
+    ? sectionName.split(" ")[1]
+    : sectionName;
+
+  return {
+    src: `${basicLink}${path}/covers/768/${formatName(itemName)}.jpg`,
+    alt: `${itemName} Cover`,
+  };
+}; // Формирование изображения Cover/обложки
 for (const [sectionName, items] of Object.entries(gallery)) {
   const clone = recentTemplate.content.cloneNode(true);
   const button = clone.querySelector(".section_button");
@@ -92,7 +104,7 @@ for (const [sectionName, items] of Object.entries(gallery)) {
   const list = clone.querySelector(".section_list");
 
   button.dataset.section = sectionName;
-  if (sectionName === "CONTENTs man") {
+  if (isSpecialSection(sectionName)) {
     img.classList.replace("logo", "special_logo");
     img.src = specialLogo;
     img.alt = "Special Logo";
@@ -103,15 +115,15 @@ for (const [sectionName, items] of Object.entries(gallery)) {
 
   for (const [name] of Object.entries(items).slice(0, 3)) {
     const li = document.createElement("li");
-    li.dataset.name = name;
+    const div = document.createElement("div");
+    div.classList = "cover_link";
+    div.dataset.name = name;
 
-    const itemImg = document.createElement("img");
-    itemImg.src = `${basicLink}${sectionName}/covers/768/${formatName(
-      name
-    )}.jpg`;
-    itemImg.alt = name;
+    const { src, alt } = buildImageCover(sectionName, name);
+    const itemImg = Object.assign(document.createElement("img"), { src, alt });
 
-    li.appendChild(itemImg);
+    div.appendChild(itemImg);
+    li.appendChild(div);
     list.appendChild(li);
   }
 
@@ -141,8 +153,7 @@ document.addEventListener("click", (e) => {
   if (sectionName === "covers")
     sectionFullList.classList.add("full_list_covers");
 
-  const isSpecial = sectionName === "CONTENTs man";
-  if (isSpecial) {
+  if (isSpecialSection(sectionName)) {
     sectionFullTitle.appendChild(
       Object.assign(document.createElement("img"), {
         src: specialLogo,
@@ -162,15 +173,15 @@ document.addEventListener("click", (e) => {
   if (items) {
     for (const [name] of Object.entries(items)) {
       const li = document.createElement("li");
-      li.dataset.name = name;
+      const div = document.createElement("div");
+      div.classList = "cover_link";
+      div.dataset.name = name;
 
-      const path = isSpecial ? sectionName.split(" ")[1] : sectionName;
-      const img = Object.assign(document.createElement("img"), {
-        src: `${basicLink}${path}/covers/768/${formatName(name)}.jpg`,
-        alt: `${name} Cover`,
-      });
+      const { src, alt } = buildImageCover(sectionName, name);
+      const img = Object.assign(document.createElement("img"), { src, alt });
 
-      li.appendChild(img);
+      div.appendChild(img);
+      li.appendChild(div);
       sectionFullList.appendChild(li);
     }
   }
@@ -188,3 +199,24 @@ headerButton.addEventListener("click", (e) => {
   sectionFullList.innerHTML = "";
   sectionFullList.className = "section_full_list";
 }); // Обработка клика по главной кнопке
+
+const setCoverHeights = () => {
+  if (window.innerWidth >= 768) {
+    document
+      .querySelectorAll(".cover_link")
+      .forEach((el) => (el.style.height = ""));
+    return;
+  }
+
+  const minHeight = Math.min(
+    ...Array.from(document.querySelectorAll(".cover_link img"))
+      .filter((img) => img.complete && img.naturalHeight)
+      .map((img) => (img.naturalHeight * img.clientWidth) / img.naturalWidth)
+  );
+
+  document
+    .querySelectorAll(".cover_link")
+    .forEach((el) => (el.style.height = `${minHeight}px`));
+}; // Уставнока изображениям одной высоты в вертикальном расположении
+document.addEventListener("DOMContentLoaded", setCoverHeights);
+window.addEventListener("resize", setCoverHeights);
