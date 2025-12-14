@@ -51,9 +51,7 @@ for (const section in gallery) {
 }
 
 const basicLink = "https://shoneal.github.io/contentmode/images/";
-const logo = "https://shoneal.github.io/contentmode/images/logo.png";
-const specialLogo =
-  "https://shoneal.github.io/contentmode/images/special-logo.jpg";
+const logo = `${basicLink}logo.png`;
 
 document.addEventListener("DOMContentLoaded", () => {
   const storedTheme = localStorage.getItem("theme");
@@ -106,7 +104,7 @@ for (const [sectionName, items] of Object.entries(gallery)) {
   button.dataset.section = sectionName;
   if (isSpecialSection(sectionName)) {
     img.classList.replace("logo", "special_logo");
-    img.src = specialLogo;
+    img.src = `${basicLink}special-logo-white.png`;
     img.alt = "Special Logo";
   } else {
     const text = document.createTextNode(sectionName);
@@ -156,7 +154,7 @@ document.addEventListener("click", (e) => {
   if (isSpecialSection(sectionName)) {
     sectionFullTitle.appendChild(
       Object.assign(document.createElement("img"), {
-        src: specialLogo,
+        src: `${basicLink}special-logo-black.jpg`,
         alt: "Special Logo",
         className: "section_full_logo",
       })
