@@ -401,16 +401,19 @@ document.addEventListener("DOMContentLoaded", () => setCoverHeights());
 window.addEventListener("resize", () => setCoverHeights());
 
 const openPopup = (popup) => {
-  document.body.dataset.scrollPosition = window.scrollY;
-  document.body.style.top = `-${window.scrollY}px`;
-  document.body.classList.add("scroll-lock");
+  const body = document.body;
+  const scrollPosition = window.scrollY;
+  body.dataset.scrollPosition = scrollPosition;
+  body.style.top = `-${scrollPosition}px`;
+  body.classList.add("scroll-lock");
   popup.classList.add("popup_is-opened");
   document.addEventListener("keydown", closePopupByEsc);
 }; // Открытие popup
 const closePopup = (popup) => {
-  const scrollPosition = document.body.dataset.scrollPosition;
-  document.body.style.top = "";
-  document.body.classList.remove("scroll-lock");
+  const body = document.body;
+  const scrollPosition = body.dataset.scrollPosition;
+  body.style.top = "";
+  body.classList.remove("scroll-lock");
   window.scrollTo(0, scrollPosition);
   popup.classList.remove("popup_is-opened");
   popup.querySelectorAll("img").forEach((img) => {
