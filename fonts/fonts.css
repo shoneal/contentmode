@@ -18,3 +18,105 @@
   font-weight: 900;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Abril Fatface";
+  src: url(./AbrilFatface.otf) format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Archivo Black";
+  src: url(./ArchivoBlack-Regular.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Arial Black";
+  src: url(./arial_black.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: asenine;
+  src: url(./ASENINE.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Belleza";
+  src: url(./Belleza-Regular.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: didot;
+  src: url(./Didot.otf) format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "EB Garamond";
+  src: url(./EBGaramond.otf) format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "genghis-khan";
+  src: url(./Genghis-Khan.otf) format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: gil-sans-light;
+  src: url(./GillSansLightC-Italic.woff2) format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Impact, Chicago;
+  src: url(./Impact-Chicago.woff) format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "montserrat";
+  src: url(./Montserrat-Bold.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Petit Formal Script";
+  src: url(./PetitFormalScript-Regular.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Radiant";
+  src: url(./RadiantCTXCond-Bold.woff2) format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: raleway-italic;
+  src: url(./raleway-italic.woff2) format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Symbol;
+  src: url(./Symbol.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Times;
+  src: url(./Times.woff2) format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "trebuchet ms";
+  src: url(./Trebuchet-MS.ttf) format("truetype");
+  font-display: swap;
+}
