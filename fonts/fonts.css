@@ -120,3 +120,45 @@
   src: url(./Trebuchet-MS.ttf) format("truetype");
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Anonymous Pro";
+  src: url(./Anonymous-Pro.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Anton";
+  src: url(./anton.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Book Antiqua";
+  src: url(./bookantiqua_bold.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cinzel";
+  src: url(./Cinzel-Bold.otf) format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gidugu";
+  src: url(./Gidugu-Regular.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Multipa";
+  src: url(./MultipaDisplay-Black.woff2) format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url(./PlayfairDisplay-Bold.ttf) format("truetype");
+  font-display: swap;
+}

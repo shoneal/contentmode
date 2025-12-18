@@ -11,6 +11,12 @@ const gallery = {
       date: "2025-09-01",
       fontSize: "50px",
     },
+    "Kiki Layne": {
+      sum: 17,
+      date: "2025-07-01",
+      fontSize: "59px",
+      textTransform: "uppercase",
+    },
     "Aja Naomi King": {
       sum: 8,
       date: "2025-07-01",
@@ -35,6 +41,74 @@ const gallery = {
       sum: 30,
       date: "2024-02-01",
       fontWeight: "normal",
+    },
+    "Victoria Justice": {
+      sum: 19,
+      date: "2024-07-01",
+      fontFamily: "avenir-reg",
+      fontSize: "47px",
+      textTransform: "uppercase",
+      letterSpacing: "0.4px",
+    },
+    "Sydney Sweeney": {
+      sum: 17,
+      date: "2021-09-01",
+      fontFamily: "Impact, Chicago",
+      fontSize: "24pt",
+      textTransform: "uppercase",
+    },
+    "Lily Collins": {
+      sum: 31,
+      date: "2020-12-01",
+      fontFamily: "Anonymous Pro",
+      fontSize: "52px",
+      textTransform: "uppercase",
+      fontStyle: "italic",
+      fontWeight: "normal",
+    },
+    "Riley Keough": {
+      sum: 15,
+      date: "2021-07-01",
+      fontFamily: "Cinzel",
+      fontSize: "18pt",
+      textTransform: "uppercase",
+    },
+    "Aubrey Plaza": {
+      sum: 11,
+      date: "2021-07-01",
+      fontFamily: "Gidugu",
+      fontSize: "105px",
+      textTransform: "uppercase",
+      letterSpacing: "2px",
+    },
+    "Kiersey Clemons": {
+      sum: 9,
+      date: "2020-09-01",
+      fontFamily: "Times",
+      fontSize: "42px",
+      textTransform: "uppercase",
+      fontStyle: "italic",
+    },
+    "Samara Weaving": {
+      sum: 25,
+      date: "2021-08-01",
+      fontFamily: "EB Garamond",
+      fontSize: "20pt",
+      textTransform: "uppercase",
+    },
+    "Lili Reinhart": {
+      sum: 20,
+      date: "2022-03-01",
+      fontFamily: "Multipa",
+      fontSize: "44px",
+      textTransform: "uppercase",
+    },
+    "Maude Apatow": {
+      sum: 13,
+      date: "2020-06-01",
+      fontFamily: "Anton",
+      fontSize: "56px",
+      letterSpacing: "-3.6px",
     },
   },
   "CONTENTs man": {
@@ -77,6 +151,11 @@ const gallery = {
       fontSize: "50px",
       fontWeight: "normal",
     },
+    "Ed McVey": {
+      sum: 19,
+      date: "2024-02-01",
+      fontWeight: "normal",
+    },
     "Chance Perdomo": {
       sum: 14,
       date: "2023-12-01",
@@ -88,6 +167,18 @@ const gallery = {
     },
   },
   features: {
+    "Kahyun Kim": {
+      sum: 16,
+      date: "2025-02-01",
+      fontFamily: "Impact, Chicago",
+      fontSize: "55px",
+      letterSpacing: "-0.02em",
+    },
+    "Alfie Fuller": {
+      sum: 8,
+      date: "2025-04-01",
+      fontSize: "65px",
+    },
     "Zoe Cipres": {
       sum: 7,
       date: "2025-02-24",
@@ -121,11 +212,24 @@ const gallery = {
       date: "2023-12-01",
       fontWeight: "normal",
     },
+    "Adam DiMarco": {
+      sum: 14,
+      date: "2022-11-19",
+      fontFamily: "Book Antiqua",
+      textTransform: "uppercase",
+      letterSpacing: "0.4px",
+    },
     "Tyler Alvarez": {
       sum: 14,
       date: "2022-11-18",
       fontFamily: "genghis-khan",
       fontWeight: "normal",
+    },
+    "Gwilym Lee": {
+      sum: 11,
+      date: "2021-12-01",
+      fontFamily: "Playfair Display",
+      textTransform: "uppercase",
     },
     "Christine Ko": {
       sum: 17,
@@ -184,11 +288,20 @@ const gallery = {
     },
     "Laysla De Oliveira": {
       sum: 15,
-      date: "2018-08-01",
+      date: "2018-08-02",
       fontFamily: "Abril Fatface",
       fontSize: "48px",
       textTransform: "uppercase",
       letterSpacing: "-1.8px",
+    },
+    "Lucy Fry": {
+      sum: 10,
+      date: "2018-08-01",
+      fontFamily: "didot",
+      fontSize: "57px",
+      textTransform: "uppercase",
+      letterSpacing: "-1.8px",
+      fontStyle: "italic",
     },
   },
   beauty: {
@@ -199,6 +312,13 @@ const gallery = {
       fontSize: "55px",
       textTransform: "uppercase",
       letterSpacing: "-0.02em",
+    },
+    "Georgina Campbell": {
+      sum: 23,
+      date: "2022-09-01",
+      fontFamily: "genghis-khan",
+      textTransform: "uppercase",
+      fontWeight: "normal",
     },
     "Grace Van Patten": {
       sum: 15,
@@ -220,6 +340,13 @@ const gallery = {
       fontFamily: "Radiant",
       fontSize: "76px",
     },
+    "Lorenza Izzo": {
+      sum: 8,
+      date: "2020-05-01",
+      fontFamily: "Abril Fatface",
+      fontSize: "67px",
+      letterSpacing: "-0.3px",
+    },
   },
 };
 
@@ -233,13 +360,6 @@ for (const section in gallery) {
 
 const basicLink = "https://shoneal.github.io/contentmode/images/";
 const logo = `${basicLink}logo.png`;
-
-document.addEventListener("DOMContentLoaded", () => {
-  const storedTheme = localStorage.getItem("theme");
-  if (storedTheme === "dark") {
-    document.body.classList.add("dark-theme");
-  }
-}); // Смена темы
 
 const navigation = document.querySelector(".navigation");
 const navList = navigation.querySelector(".navigation_list");
@@ -358,8 +478,8 @@ document.addEventListener("click", (e) => {
     for (const [name] of Object.entries(items)) {
       sectionFullList.appendChild(createCoverListItem(name, sectionName));
     }
+    window.scroll(0, 0);
   }
-  window.scroll(0, 0);
   setCoverHeights(sectionFullList);
   window.addEventListener("resize", () => setCoverHeights(sectionFullList));
 }); // Обработка клика по кнопкам навигации
@@ -397,7 +517,14 @@ const setCoverHeights = (container = document) => {
     .querySelectorAll(".cover_link")
     .forEach((el) => (el.style.height = `${minHeight}px`));
 }; // Уставнока изображениям одной высоты в вертикальном расположении
-document.addEventListener("DOMContentLoaded", () => setCoverHeights());
+document.addEventListener("DOMContentLoaded", () => {
+  const storedTheme = localStorage.getItem("theme");
+  if (storedTheme === "dark") {
+    document.body.classList.add("dark-theme");
+  }
+
+  setCoverHeights();
+}); // (+Смена темы)
 window.addEventListener("resize", () => setCoverHeights());
 
 const openPopup = (popup) => {
@@ -452,6 +579,7 @@ const renderPopupContent = (name, section, data) => {
   const title = popupHeader.querySelector(".popup_header_title");
   const container = popup.querySelector(".popup_main");
 
+  container.style.opacity = "0";
   clearContainer(container);
   img.src = `${basicLink}${getSectionPath(section)}/${formatName(
     name

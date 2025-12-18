@@ -279,7 +279,6 @@ main {
 .popup_main {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  opacity: 0;
 }
 
 .popup_image_wrapper {
