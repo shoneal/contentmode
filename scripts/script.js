@@ -647,9 +647,11 @@ document.querySelectorAll("button[data-section]").forEach((btn) => {
       }
     }
 
-    requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, behavior: "auto" });
-    });
+    if (!sectionFull.classList.contains("hidden")) {
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      });
+    }
     setCoverHeights(sectionFullList);
     window.addEventListener("resize", () => setCoverHeights(sectionFullList));
   });
