@@ -11,12 +11,6 @@ const gallery = {
       date: "2025-09-01",
       fontSize: "50px",
     },
-    "Kiki Layne": {
-      sum: 17,
-      date: "2025-07-01",
-      fontSize: "59px",
-      textTransform: "uppercase",
-    },
     "Aja Naomi King": {
       sum: 8,
       date: "2025-07-01",
@@ -42,30 +36,6 @@ const gallery = {
       date: "2024-02-01",
       fontWeight: "normal",
     },
-    "Victoria Justice": {
-      sum: 19,
-      date: "2024-07-01",
-      fontFamily: "avenir-reg",
-      fontSize: "47px",
-      textTransform: "uppercase",
-      letterSpacing: "0.4px",
-    },
-    "Sydney Sweeney": {
-      sum: 17,
-      date: "2021-09-01",
-      fontFamily: "Impact, Chicago",
-      fontSize: "24pt",
-      textTransform: "uppercase",
-    },
-    "Lily Collins": {
-      sum: 31,
-      date: "2020-12-01",
-      fontFamily: "Anonymous Pro",
-      fontSize: "52px",
-      textTransform: "uppercase",
-      fontStyle: "italic",
-      fontWeight: "normal",
-    },
     "Riley Keough": {
       sum: 15,
       date: "2021-07-01",
@@ -80,14 +50,6 @@ const gallery = {
       fontSize: "105px",
       textTransform: "uppercase",
       letterSpacing: "2px",
-    },
-    "Kiersey Clemons": {
-      sum: 9,
-      date: "2020-09-01",
-      fontFamily: "Times",
-      fontSize: "42px",
-      textTransform: "uppercase",
-      fontStyle: "italic",
     },
     "Samara Weaving": {
       sum: 25,
@@ -109,6 +71,89 @@ const gallery = {
       fontFamily: "Anton",
       fontSize: "56px",
       letterSpacing: "-3.6px",
+    },
+    "Madelaine Petsch": {
+      sum: 25,
+      date: "2022-03-01",
+      fontFamily: "didot",
+      fontSize: "46px",
+      letterSpacing: "-1.8px",
+    },
+    "Mary Elizabeth Winstead": {
+      sum: 11,
+      date: "2020-04-01",
+      fontSize: "50px",
+      fontWeight: "normal",
+    },
+    "Odeya Rush": {
+      sum: 16,
+      date: "2023-11-01",
+      fontWeight: "normal",
+    },
+    "Adria Ajorna": {
+      sum: 23,
+      date: "2022-05-01",
+      fontFamily: "Kefa",
+      fontSize: "49px",
+    },
+    "Sophie Cookson": {
+      sum: 19,
+      date: "2021-07-01",
+      fontFamily: "Jura",
+      fontSize: "24pt",
+      textTransform: "uppercase",
+    },
+    "Olivia Cooke": {
+      sum: 17,
+      date: "2021-02-01",
+      fontFamily: "didot",
+      fontSize: "24pt",
+      fontStyle: "italic",
+      textTransform: "uppercase",
+      fontWeight: "normal",
+    },
+    "Birgundi Baker": {
+      sum: 12,
+      date: "2020-08-01",
+      fontFamily: "Heldane",
+      fontSize: "60px",
+      fontStyle: "italic",
+    },
+    "Hannah John-Kamen": {
+      sum: 15,
+      date: "2020-07-01",
+      fontFamily: "Anton",
+      fontSize: "37px",
+      textTransform: "uppercase",
+      letterSpacing: "-1.8px",
+    },
+    "Kaitlyn Dever": {
+      sum: 0,
+      date: "2018-08-01",
+      fontFamily: "Raleway",
+      fontSize: "48px",
+      textTransform: "uppercase",
+      letterSpacing: "-0.6px",
+    },
+    "Lucy Boynton": {
+      sum: 8,
+      date: "2018-08-01",
+      fontFamily: "Abel",
+      fontSize: "61px",
+      letterSpacing: "1.8px",
+      fontWeight: "normal",
+    },
+    "Maura Tierney": {
+      sum: 17,
+      date: "2018-08-01",
+    },
+    "Sofia Boutella": {
+      sum: 16,
+      date: "2015-06-01",
+      fontSize: "46px",
+      textTransform: "uppercase",
+      letterSpacing: "1.7px",
+      fontStyle: "italic",
     },
   },
   "CONTENTs man": {
@@ -165,6 +210,26 @@ const gallery = {
       sum: 15,
       date: "2023-04-01",
     },
+    "Scoot McNairy": {
+      sum: 6,
+      date: "2015-06-01",
+    },
+    "Stephan James": {
+      sum: 13,
+      date: "2018-08-01",
+      fontFamily: "junicode",
+      textTransform: "uppercase",
+      letterSpacing: "0.4px",
+      fontStyle: "italic",
+    },
+    "Aldis Hodge": {
+      sum: 5,
+      date: "2019-10-01",
+      fontFamily: "Oswald",
+      fontSize: "84px",
+      textTransform: "uppercase",
+      letterSpacing: "2.9px",
+    },
   },
   features: {
     "Kahyun Kim": {
@@ -212,24 +277,11 @@ const gallery = {
       date: "2023-12-01",
       fontWeight: "normal",
     },
-    "Adam DiMarco": {
-      sum: 14,
-      date: "2022-11-19",
-      fontFamily: "Book Antiqua",
-      textTransform: "uppercase",
-      letterSpacing: "0.4px",
-    },
     "Tyler Alvarez": {
       sum: 14,
       date: "2022-11-18",
       fontFamily: "genghis-khan",
       fontWeight: "normal",
-    },
-    "Gwilym Lee": {
-      sum: 11,
-      date: "2021-12-01",
-      fontFamily: "Playfair Display",
-      textTransform: "uppercase",
     },
     "Christine Ko": {
       sum: 17,
@@ -294,15 +346,6 @@ const gallery = {
       textTransform: "uppercase",
       letterSpacing: "-1.8px",
     },
-    "Lucy Fry": {
-      sum: 10,
-      date: "2018-08-01",
-      fontFamily: "didot",
-      fontSize: "57px",
-      textTransform: "uppercase",
-      letterSpacing: "-1.8px",
-      fontStyle: "italic",
-    },
   },
   beauty: {
     "Maia Reficco": {
@@ -339,13 +382,6 @@ const gallery = {
       date: "2021-08-01",
       fontFamily: "Radiant",
       fontSize: "76px",
-    },
-    "Lorenza Izzo": {
-      sum: 8,
-      date: "2020-05-01",
-      fontFamily: "Abril Fatface",
-      fontSize: "67px",
-      letterSpacing: "-0.3px",
     },
   },
 };
@@ -384,7 +420,10 @@ if (navList) {
 const recentBlock = document.querySelector(".recent");
 const recentTemplate = document.getElementById("recent-template");
 const formatName = (name) =>
-  name.replace(/[^a-zA-Z\s]/g, "").replace(/\s+/g, "_");
+  name
+    .replace(/&/g, "and")
+    .replace(/[^a-zA-Z\s]/g, "")
+    .replace(/\s+/g, "_");
 const isSpecialSection = (section) => section === "CONTENTs man"; // Специальная секция
 const getSectionPath = (sectionName) =>
   isSpecialSection(sectionName) ? sectionName.split(" ")[1] : sectionName; // Второе слово из специальной секции или обычная секция
@@ -449,8 +488,9 @@ document.addEventListener("click", (e) => {
   e.preventDefault();
 
   const sectionName = btn.dataset.section;
-  navigation.style.display = recentBlock.style.display = "none";
-  sectionFull.style.display = "block";
+  navigation.classList.add("hidden");
+  recentBlock.classList.add("hidden");
+  sectionFull.classList.remove("hidden");
   headerButton.classList.replace("button-is_active", "button-is_not_active");
   headerButton.disabled = false;
 
@@ -478,8 +518,11 @@ document.addEventListener("click", (e) => {
     for (const [name] of Object.entries(items)) {
       sectionFullList.appendChild(createCoverListItem(name, sectionName));
     }
-    window.scroll(0, 0);
   }
+
+  requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  });
   setCoverHeights(sectionFullList);
   window.addEventListener("resize", () => setCoverHeights(sectionFullList));
 }); // Обработка клика по кнопкам навигации
@@ -488,8 +531,9 @@ headerButton.addEventListener("click", (e) => {
 
   e.preventDefault();
 
-  navigation.style.display = recentBlock.style.display = "block";
-  sectionFull.style.display = "none";
+  navigation.classList.remove("hidden");
+  recentBlock.classList.remove("hidden");
+  sectionFull.classList.add("hidden");
 
   headerButton.classList.replace("button-is_not_active", "button-is_active");
   headerButton.disabled = true;
@@ -557,7 +601,7 @@ const popup = document.querySelector(".popup");
 const closeBtn = popup.querySelector(".close");
 document.addEventListener("click", (e) => {
   const coverLink = e.target.closest(".cover_link");
-  if (!coverLink || !coverLink.dataset.name) return;
+  if (!coverLink) return;
 
   const name = coverLink.dataset.name;
   let section, data;

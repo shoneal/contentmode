@@ -122,20 +122,8 @@
 }
 
 @font-face {
-  font-family: "Anonymous Pro";
-  src: url(./Anonymous-Pro.ttf) format("truetype");
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Anton";
   src: url(./anton.ttf) format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Book Antiqua";
-  src: url(./bookantiqua_bold.ttf) format("truetype");
   font-display: swap;
 }
 
@@ -158,7 +146,37 @@
 }
 
 @font-face {
-  font-family: "Playfair Display";
-  src: url(./PlayfairDisplay-Bold.ttf) format("truetype");
+  font-family: "Kefa";
+  src: url(./kefa-bold.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jura";
+  src: url(./Jura-Bold.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Heldane";
+  src: url(./HeldaneTextMediumItalic.otf) format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url(./Oswald-Bold.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "junicode";
+  src: url(./Junicode-Italic.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Abel";
+  src: url(./Abel-Regular.ttf) format("truetype");
   font-display: swap;
 }
