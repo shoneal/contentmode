@@ -20,8 +20,26 @@
 }
 
 @font-face {
+  font-family: "Abel";
+  src: url(./Abel-Regular.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Abril Fatface";
   src: url(./AbrilFatface.otf) format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Advent Pro";
+  src: url(./AdventPro-Bold.woff2) format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Anton";
+  src: url(./anton.ttf) format("truetype");
   font-display: swap;
 }
 
@@ -50,8 +68,14 @@
 }
 
 @font-face {
+  font-family: "Cinzel";
+  src: url(./Cinzel-Bold.otf) format("opentype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: didot;
-  src: url(./Didot.otf) format("opentype");
+  src: url(./Didot-Bold.woff2) format("woff2");
   font-display: swap;
 }
 
@@ -62,8 +86,20 @@
 }
 
 @font-face {
+  font-family: "Fino Sans";
+  src: url(./fino-sans-bold.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "genghis-khan";
   src: url(./Genghis-Khan.otf) format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gidugu";
+  src: url(./Gidugu-Regular.ttf) format("truetype");
   font-display: swap;
 }
 
@@ -74,14 +110,62 @@
 }
 
 @font-face {
+  font-family: "Heldane";
+  src: url(./HeldaneTextMediumItalic.otf) format("opentype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: Impact, Chicago;
   src: url(./Impact-Chicago.woff) format("woff");
   font-display: swap;
 }
 
 @font-face {
+  font-family: "junicode";
+  src: url(./Junicode.woff2) format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "junicode";
+  src: url(./Junicode-Italic.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jura";
+  src: url(./Jura-Bold.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kefa";
+  src: url(./kefa-bold.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kumar One";
+  src: url(./KumarOne-Regular.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "montserrat";
   src: url(./Montserrat-Bold.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Multipa";
+  src: url(./MultipaDisplay-Black.woff2) format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url(./Oswald-Bold.ttf) format("truetype");
   font-display: swap;
 }
 
@@ -104,6 +188,18 @@
 }
 
 @font-face {
+  font-family: "ruler-light";
+  src: url(./Ruler-Bold-Italic.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Six Caps";
+  src: url(./SixCaps.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: Symbol;
   src: url(./Symbol.ttf) format("truetype");
   font-display: swap;
@@ -118,65 +214,5 @@
 @font-face {
   font-family: "trebuchet ms";
   src: url(./Trebuchet-MS.ttf) format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Anton";
-  src: url(./anton.ttf) format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Cinzel";
-  src: url(./Cinzel-Bold.otf) format("opentype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Gidugu";
-  src: url(./Gidugu-Regular.ttf) format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Multipa";
-  src: url(./MultipaDisplay-Black.woff2) format("woff2");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Kefa";
-  src: url(./kefa-bold.ttf) format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Jura";
-  src: url(./Jura-Bold.ttf) format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Heldane";
-  src: url(./HeldaneTextMediumItalic.otf) format("opentype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Oswald";
-  src: url(./Oswald-Bold.ttf) format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "junicode";
-  src: url(./Junicode-Italic.ttf) format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Abel";
-  src: url(./Abel-Regular.ttf) format("truetype");
   font-display: swap;
 }

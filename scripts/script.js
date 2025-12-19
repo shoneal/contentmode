@@ -19,6 +19,10 @@ const gallery = {
       textTransform: "uppercase",
       letterSpacing: "-0.02em",
     },
+    "Sofia Boutella 2": {
+      sum: 25,
+      date: "2025-06-01",
+    },
     "Emma Appleton": {
       sum: 14,
       date: "2024-12-01",
@@ -30,6 +34,13 @@ const gallery = {
       fontFamily: "Times",
       fontSize: "71px",
       fontWeight: "normal",
+    },
+    "Lucy Hale": {
+      sum: 31,
+      date: "2023-09-01",
+      fontFamily: "Impact, Chicago",
+      fontSize: "50px",
+      textTransform: "uppercase",
     },
     "Demi Singleton": {
       sum: 30,
@@ -91,7 +102,7 @@ const gallery = {
       fontWeight: "normal",
     },
     "Adria Ajorna": {
-      sum: 23,
+      sum: 20,
       date: "2022-05-01",
       fontFamily: "Kefa",
       fontSize: "49px",
@@ -128,7 +139,7 @@ const gallery = {
       letterSpacing: "-1.8px",
     },
     "Kaitlyn Dever": {
-      sum: 0,
+      sum: 10,
       date: "2018-08-01",
       fontFamily: "Raleway",
       fontSize: "48px",
@@ -146,6 +157,23 @@ const gallery = {
     "Maura Tierney": {
       sum: 17,
       date: "2018-08-01",
+    },
+    "Eiza González": {
+      sum: 17,
+      date: "2020-03-01",
+      fontFamily: "Archivo Black",
+      fontSize: "51px",
+      textTransform: "uppercase",
+      letterSpacing: "-1.8px",
+    },
+    "Naomie Harris": {
+      sum: 11,
+      date: "2018-08-01",
+      fontFamily: "Six Caps",
+      fontSize: "92px",
+      textTransform: "uppercase",
+      fontStyle: "italic",
+      letterSpacing: "-1.8px",
     },
     "Sofia Boutella": {
       sum: 16,
@@ -210,8 +238,81 @@ const gallery = {
       sum: 15,
       date: "2023-04-01",
     },
+    "Shôw Kasamatsu": {
+      sum: 8,
+      date: "2022-08-01",
+      fontFamily: "Arial Black",
+      fontSize: "18pt",
+    },
+    "Scoot McNairy 2": {
+      sum: 25,
+      date: "2022-11-01",
+      fontFamily: "junicode",
+      fontWeight: "normal",
+    },
+    "Saagar Shaikh": {
+      sum: 10,
+      date: "2025-04-01",
+      fontFamily: "Arial Black",
+      fontSize: "40px",
+      letterSpacing: "-0.02em",
+    },
+    "Adam Scott": {
+      sum: 19,
+      date: "2022-06-01",
+      fontFamily: "didot",
+      fontSize: "48px",
+      textTransform: "uppercase",
+    },
+    "Charlie Vickers": {
+      sum: 13,
+      date: "2022-09-01",
+      fontFamily: "junicode",
+      textTransform: "uppercase",
+    },
+    "Tosin Cole": {
+      sum: 17,
+      date: "2022-09-01",
+      fontFamily: "Advent Pro",
+      fontSize: "45px",
+      letterSpacing: "2.1px",
+      textTransform: "uppercase",
+    },
+    "Himesh Patel": {
+      sum: 12,
+      date: "2022-04-01",
+      fontFamily: "Fino Sans",
+      fontSize: "104px",
+      textTransform: "uppercase",
+    },
+    "Peter Sarsgaard": {
+      sum: 12,
+      date: "2021-12-01",
+      fontFamily: "Playfair Display",
+    },
+    "Max Minghella": {
+      sum: 16,
+      date: "2021-08-01",
+      fontFamily: "Cinzel",
+      fontSize: "22pt",
+      textTransform: "uppercase",
+    },
+    "Toheeb Jimoh": {
+      sum: 12,
+      date: "2021-09-01",
+      fontFamily: "EB Garamond",
+      fontSize: "18pt",
+      textTransform: "uppercase",
+    },
+    "Thomas Middleditch": {
+      sum: 21,
+      date: "2021-01-01",
+      fontFamily: "genghis-khan",
+      textTransform: "uppercase",
+      fontWeight: "normal",
+    },
     "Scoot McNairy": {
-      sum: 6,
+      sum: 4,
       date: "2015-06-01",
     },
     "Stephan James": {
@@ -221,6 +322,32 @@ const gallery = {
       textTransform: "uppercase",
       letterSpacing: "0.4px",
       fontStyle: "italic",
+    },
+    "Taylor Zakhar Perez": {
+      sum: 30,
+      date: "2020-08-01",
+      fontFamily: "didot",
+      fontSize: "40px",
+      textTransform: "uppercase",
+    },
+    "Brandon Flynn": {
+      sum: 21,
+      date: "2020-07-01",
+      fontFamily: "Kumar One",
+      fontSize: "36px",
+      textTransform: "uppercase",
+    },
+    "Billy Magnussen": {
+      sum: 10,
+      date: "2018-08-01",
+      fontFamily: "ruler-light",
+      fontSize: "37px",
+      letterSpacing: "-1.8px",
+      fontStyle: "italic",
+    },
+    "Andre Holland": {
+      sum: 8,
+      date: "2021-06-01",
     },
     "Aldis Hodge": {
       sum: 5,
@@ -421,9 +548,11 @@ const recentBlock = document.querySelector(".recent");
 const recentTemplate = document.getElementById("recent-template");
 const formatName = (name) =>
   name
-    .replace(/&/g, "and")
-    .replace(/[^a-zA-Z\s]/g, "")
-    .replace(/\s+/g, "_");
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9\s-]/g, "")
+    .replace(/[-\s]+/g, "_");
+const cleanEndName = (name) => name.replace(/[\d\s]+$/g, "");
 const isSpecialSection = (section) => section === "CONTENTs man"; // Специальная секция
 const getSectionPath = (sectionName) =>
   isSpecialSection(sectionName) ? sectionName.split(" ")[1] : sectionName; // Второе слово из специальной секции или обычная секция
@@ -435,10 +564,10 @@ function createCoverListItem(name, sectionName) {
   div.classList = "cover_link";
   div.dataset.name = name;
 
-  img.src = `${basicLink}${getSectionPath(sectionName)}/covers/768/${formatName(
+  img.src = `${basicLink}${getSectionPath(sectionName)}/covers/${formatName(
     name
   )}.jpg`;
-  img.alt = `${name} Cover`;
+  img.alt = `${cleanEndName(name)} Cover`;
   img.addEventListener("load", () => {
     img.style.opacity = "1";
   });
@@ -481,50 +610,49 @@ const sectionFull = document.querySelector(".section_full");
 const sectionFullTitle = document.querySelector(".section_full_title");
 const sectionFullList = document.querySelector(".section_full_list");
 const clearContainer = (el) => el.replaceChildren?.() || (el.innerHTML = ""); // Очистка divoв
-document.addEventListener("click", (e) => {
-  const btn = e.target.closest("button[data-section]");
-  if (!btn || btn === headerButton) return;
 
-  e.preventDefault();
+document.querySelectorAll("button[data-section]").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const sectionName = btn.dataset.section;
+    navigation.classList.add("hidden");
+    recentBlock.classList.add("hidden");
+    sectionFull.classList.remove("hidden");
+    headerButton.classList.replace("button-is_active", "button-is_not_active");
+    headerButton.disabled = false;
 
-  const sectionName = btn.dataset.section;
-  navigation.classList.add("hidden");
-  recentBlock.classList.add("hidden");
-  sectionFull.classList.remove("hidden");
-  headerButton.classList.replace("button-is_active", "button-is_not_active");
-  headerButton.disabled = false;
-
-  if (sectionName === "covers")
-    sectionFullList.classList.add("full_list_covers");
-
-  if (isSpecialSection(sectionName)) {
-    sectionFullTitle.appendChild(
-      Object.assign(document.createElement("img"), {
-        src: `${basicLink}special-logo-black.jpg`,
-        alt: "Special Logo",
-        className: "section_full_logo",
-      })
-    );
-  } else {
-    sectionFullTitle.appendChild(
-      Object.assign(document.createElement("h2"), {
-        textContent: sectionName,
-      })
-    );
-  }
-
-  const items = gallery[sectionName];
-  if (items) {
-    for (const [name] of Object.entries(items)) {
-      sectionFullList.appendChild(createCoverListItem(name, sectionName));
+    if (sectionName === "covers") {
+      sectionFullList.classList.add("full_list_covers");
     }
-  }
 
-  requestAnimationFrame(() => {
-    window.scrollTo({ top: 0, behavior: "auto" });
+    if (isSpecialSection(sectionName)) {
+      sectionFullTitle.appendChild(
+        Object.assign(document.createElement("img"), {
+          src: `${basicLink}special-logo-black.jpg`,
+          alt: "Special Logo",
+          className: "section_full_logo",
+        })
+      );
+    } else {
+      sectionFullTitle.appendChild(
+        Object.assign(document.createElement("h2"), {
+          textContent: sectionName,
+        })
+      );
+    }
+
+    const items = gallery[sectionName];
+    if (items) {
+      for (const [name] of Object.entries(items)) {
+        sectionFullList.appendChild(createCoverListItem(name, sectionName));
+      }
+    }
+
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    });
+    setCoverHeights(sectionFullList);
+    window.addEventListener("resize", () => setCoverHeights(sectionFullList));
   });
-  setCoverHeights(sectionFullList);
-  window.addEventListener("resize", () => setCoverHeights(sectionFullList));
 }); // Обработка клика по кнопкам навигации
 headerButton.addEventListener("click", (e) => {
   if (!headerButton.classList.contains("button-is_not_active")) return;
@@ -599,6 +727,7 @@ const closePopupByEsc = (e) =>
 
 const popup = document.querySelector(".popup");
 const closeBtn = popup.querySelector(".close");
+
 document.addEventListener("click", (e) => {
   const coverLink = e.target.closest(".cover_link");
   if (!coverLink) return;
@@ -627,8 +756,8 @@ const renderPopupContent = (name, section, data) => {
   clearContainer(container);
   img.src = `${basicLink}${getSectionPath(section)}/${formatName(
     name
-  )}/768/main.jpg`;
-  img.alt = name;
+  )}/main.jpg`;
+  img.alt = cleanEndName(name);
   img.style.opacity = "0";
   img.addEventListener("load", () => {
     if (img.naturalWidth > img.naturalHeight)
@@ -636,7 +765,7 @@ const renderPopupContent = (name, section, data) => {
     else popupHeader.classList.remove("popup_header_row");
     img.style.opacity = "1";
   });
-  title.textContent = name;
+  title.textContent = cleanEndName(name);
   title.style.fontFamily = data.fontFamily || "gil-sans";
   title.style.fontSize = data.fontSize || "36pt";
   title.style.fontWeight = data.fontWeight || "bolder";
@@ -653,8 +782,8 @@ const renderPopupContent = (name, section, data) => {
     const imgEl = document.createElement("img");
     imgEl.src = `${basicLink}${getSectionPath(section)}/${formatName(
       name
-    )}/768/${i}.jpg`;
-    imgEl.alt = name;
+    )}/${i}.jpg`;
+    imgEl.alt = cleanEndName(name);
     imgEl.loading = "lazy";
     imgEl.style.opacity = "0";
 
