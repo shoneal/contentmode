@@ -105,6 +105,7 @@ button {
 }
 
 main {
+  display: flex;
   margin-block-start: 36px;
   padding-block: 10px;
 }
