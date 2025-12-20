@@ -544,8 +544,6 @@ if (navList) {
   navList.appendChild(fragment);
 } // Добавление кнопок в навигацию
 
-const recentBlock = document.querySelector(".recent");
-const recentTemplate = document.getElementById("recent-template");
 const formatName = (name) =>
   name
     .normalize("NFD")
@@ -577,101 +575,128 @@ function createCoverListItem(name, sectionName) {
 
   return li;
 } // Шаблон создания блока с обложками
-for (const [sectionName, items] of Object.entries(gallery)) {
-  const clone = recentTemplate.content.cloneNode(true);
-  const button = clone.querySelector(".section_button");
-  const img = button.querySelector("img");
-  const list = clone.querySelector(".section_list");
+const clearContainer = (el) => el.replaceChildren?.() || (el.innerHTML = ""); // Очистка divoв
 
-  button.dataset.section = sectionName;
-  if (isSpecialSection(sectionName)) {
-    img.classList.replace("logo", "special_logo");
-    img.src = `${basicLink}special-logo-white.png`;
-    img.alt = "Special Logo";
+const main = document.querySelector("main");
+function renderMainView() {
+  clearContainer(main);
+  navigation.style.display = "block";
+
+  Object.keys(gallery).forEach((sectionKey) => {
+    const recentSection = document.createElement("div");
+    recentSection.className = "recent_section";
+
+    const sectionButton = document.createElement("button");
+    sectionButton.className = "section_button";
+    sectionButton.dataset.section = sectionKey;
+    const buttonImage = document.createElement("img");
+    if (isSpecialSection(sectionKey)) {
+      buttonImage.className = "special_logo";
+      buttonImage.src = `${basicLink}special-logo-white.png`;
+      buttonImage.alt = "Special Logo";
+      sectionButton.appendChild(buttonImage);
+    } else {
+      buttonImage.className = "logo";
+      buttonImage.src = logo;
+      buttonImage.alt = "Logo";
+      sectionButton.appendChild(buttonImage);
+      const text = document.createTextNode(sectionKey);
+      sectionButton.appendChild(text);
+    }
+
+    const sectionList = document.createElement("ul");
+    sectionList.className = "section_list";
+
+    const items = Object.keys(gallery[sectionKey]).slice(0, 3);
+    items.forEach((itemName) => {
+      sectionList.appendChild(createCoverListItem(itemName, sectionKey));
+    });
+
+    recentSection.appendChild(sectionButton);
+    recentSection.appendChild(sectionList);
+    main.appendChild(recentSection);
+  });
+}
+
+function renderSectionView(activeSection) {
+  clearContainer(main);
+  navigation.style.display = "none";
+
+  const sectionFullTitle = document.createElement("div");
+  sectionFullTitle.className = "section_full_title";
+  if (isSpecialSection(activeSection)) {
+    sectionFullTitle.appendChild(
+      Object.assign(document.createElement("img"), {
+        src: `${basicLink}special-logo-black.jpg`,
+        alt: "Special Logo",
+        className: "section_full_logo",
+      })
+    );
   } else {
-    const text = document.createTextNode(sectionName);
-    button.appendChild(text);
+    sectionFullTitle.appendChild(
+      Object.assign(document.createElement("h2"), {
+        textContent: activeSection,
+      })
+    );
   }
 
-  for (const [name] of Object.entries(items).slice(0, 3)) {
-    list.appendChild(createCoverListItem(name, sectionName));
-  }
+  const sectionFullList = document.createElement("ul");
+  sectionFullList.className = "section_full_list";
 
-  recentBlock.appendChild(clone);
-} // Вставляем секции в HTML
+  Object.keys(gallery[activeSection]).forEach((itemName) => {
+    sectionFullList.appendChild(createCoverListItem(itemName, activeSection));
+  });
+
+  main.appendChild(sectionFullTitle);
+  main.appendChild(sectionFullList);
+
+  // Прокрутка наверх
+  window.scrollTo({ top: 0, behavior: "auto" });
+}
+
+function setupEventListeners() {
+  const headerButton = document.querySelector(".header_button");
+  const navigationButtons = document.querySelectorAll(".navigation_button");
+
+  // Обработчик для header_button
+  headerButton.addEventListener("click", () => {
+    headerButton.classList.add("button-is_active");
+    navigationButtons.forEach((btn) =>
+      btn.classList.remove("button-is_active")
+    );
+    renderMainView();
+  });
+
+  // Обработчики для кнопок навигации
+  navigationButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      headerButton.classList.remove("button-is_active");
+      button.classList.add("button-is_active");
+
+      const activeSection = button.dataset.section;
+      renderSectionView(activeSection);
+    });
+  });
+
+  // Обработчики для section_button внутри recent_section (если они будут добавлены динамически)
+  document.addEventListener("click", (event) => {
+    if (event.target.classList.contains("section_button")) {
+      headerButton.classList.remove("button-is_active");
+      navigationButtons.forEach((btn) =>
+        btn.classList.remove("button-is_active")
+      );
+      event.target.classList.add("button-is_active");
+
+      const activeSection = event.target.dataset.section;
+      renderSectionView(activeSection);
+    }
+  });
+}
 
 for (const img of document.querySelectorAll("img.logo")) {
   img.src = logo;
   img.alt = "Logo";
 } // Добавление всем одного логотипа
-
-const headerButton = document.querySelector(".header_button");
-const sectionFull = document.querySelector(".section_full");
-const sectionFullTitle = document.querySelector(".section_full_title");
-const sectionFullList = document.querySelector(".section_full_list");
-const clearContainer = (el) => el.replaceChildren?.() || (el.innerHTML = ""); // Очистка divoв
-
-document.querySelectorAll("button[data-section]").forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    const sectionName = btn.dataset.section;
-    navigation.classList.add("hidden");
-    recentBlock.classList.add("hidden");
-    sectionFull.classList.remove("hidden");
-    headerButton.classList.replace("button-is_active", "button-is_not_active");
-    headerButton.disabled = false;
-
-    if (sectionName === "covers") {
-      sectionFullList.classList.add("full_list_covers");
-    }
-
-    if (isSpecialSection(sectionName)) {
-      sectionFullTitle.appendChild(
-        Object.assign(document.createElement("img"), {
-          src: `${basicLink}special-logo-black.jpg`,
-          alt: "Special Logo",
-          className: "section_full_logo",
-        })
-      );
-    } else {
-      sectionFullTitle.appendChild(
-        Object.assign(document.createElement("h2"), {
-          textContent: sectionName,
-        })
-      );
-    }
-
-    const items = gallery[sectionName];
-    if (items) {
-      for (const [name] of Object.entries(items)) {
-        sectionFullList.appendChild(createCoverListItem(name, sectionName));
-      }
-    }
-
-    if (!sectionFull.classList.contains("hidden")) {
-      requestAnimationFrame(() => {
-        window.scrollTo({ top: 0, behavior: "auto" });
-      });
-    }
-    setCoverHeights(sectionFullList);
-    window.addEventListener("resize", () => setCoverHeights(sectionFullList));
-  });
-}); // Обработка клика по кнопкам навигации
-headerButton.addEventListener("click", (e) => {
-  if (!headerButton.classList.contains("button-is_not_active")) return;
-
-  e.preventDefault();
-
-  navigation.classList.remove("hidden");
-  recentBlock.classList.remove("hidden");
-  sectionFull.classList.add("hidden");
-
-  headerButton.classList.replace("button-is_not_active", "button-is_active");
-  headerButton.disabled = true;
-  clearContainer(sectionFullTitle);
-  clearContainer(sectionFullList);
-  sectionFullList.className = "section_full_list";
-  setCoverHeights();
-}); // Обработка клика по главной кнопке
 
 const setCoverHeights = (container = document) => {
   const root = container instanceof HTMLElement ? container : document;
@@ -697,7 +722,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("dark-theme");
   }
 
-  setCoverHeights();
+  renderMainView();
+  setupEventListeners();
 }); // (+Смена темы)
 window.addEventListener("resize", () => setCoverHeights());
 
@@ -730,24 +756,24 @@ const closePopupByEsc = (e) =>
 const popup = document.querySelector(".popup");
 const closeBtn = popup.querySelector(".close");
 
-// document.addEventListener("click", (e) => {
-//   const coverLink = e.target.closest(".cover_link");
-//   if (!coverLink) return;
+document.addEventListener("click", (e) => {
+  const coverLink = e.target.closest(".cover_link");
+  if (!coverLink) return;
 
-//   const name = coverLink.dataset.name;
-//   let section, data;
+  const name = coverLink.dataset.name;
+  let section, data;
 
-//   for (const [sec, items] of Object.entries(gallery)) {
-//     if (items[name]) {
-//       section = sec;
-//       data = items[name];
-//       break;
-//     }
-//   }
+  for (const [sec, items] of Object.entries(gallery)) {
+    if (items[name]) {
+      section = sec;
+      data = items[name];
+      break;
+    }
+  }
 
-//   renderPopupContent(name, section, data);
-//   openPopup(popup);
-// }); // Клик по обложкам
+  renderPopupContent(name, section, data);
+  openPopup(popup);
+}); // Клик по обложкам
 const renderPopupContent = (name, section, data) => {
   const popupHeader = popup.querySelector(".popup_header");
   const img = popupHeader.querySelector(".popup_header_image");
