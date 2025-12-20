@@ -647,11 +647,11 @@ document.querySelectorAll("button[data-section]").forEach((btn) => {
       }
     }
 
-    // if (!sectionFull.classList.contains("hidden")) {
-    //   requestAnimationFrame(() => {
-    //     window.scrollTo({ top: 0, behavior: "auto" });
-    //   });
-    // }
+    if (!sectionFull.classList.contains("hidden")) {
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      });
+    }
     setCoverHeights(sectionFullList);
     window.addEventListener("resize", () => setCoverHeights(sectionFullList));
   });
@@ -730,24 +730,24 @@ const closePopupByEsc = (e) =>
 const popup = document.querySelector(".popup");
 const closeBtn = popup.querySelector(".close");
 
-document.addEventListener("click", (e) => {
-  const coverLink = e.target.closest(".cover_link");
-  if (!coverLink) return;
+// document.addEventListener("click", (e) => {
+//   const coverLink = e.target.closest(".cover_link");
+//   if (!coverLink) return;
 
-  const name = coverLink.dataset.name;
-  let section, data;
+//   const name = coverLink.dataset.name;
+//   let section, data;
 
-  for (const [sec, items] of Object.entries(gallery)) {
-    if (items[name]) {
-      section = sec;
-      data = items[name];
-      break;
-    }
-  }
+//   for (const [sec, items] of Object.entries(gallery)) {
+//     if (items[name]) {
+//       section = sec;
+//       data = items[name];
+//       break;
+//     }
+//   }
 
-  renderPopupContent(name, section, data);
-  openPopup(popup);
-}); // Клик по обложкам
+//   renderPopupContent(name, section, data);
+//   openPopup(popup);
+// }); // Клик по обложкам
 const renderPopupContent = (name, section, data) => {
   const popupHeader = popup.querySelector(".popup_header");
   const img = popupHeader.querySelector(".popup_header_image");
