@@ -20,27 +20,13 @@ const gallery = {
       letterSpacing: "-0.02em",
     },
     "Sofia Boutella 2": {
-      sum: 25,
+      sum: 18,
       date: "2025-06-01",
     },
     "Emma Appleton": {
       sum: 14,
       date: "2024-12-01",
       fontSize: "60px",
-    },
-    "Lashana Lynch": {
-      sum: 6,
-      date: "2024-10-01",
-      fontFamily: "Times",
-      fontSize: "71px",
-      fontWeight: "normal",
-    },
-    "Lucy Hale": {
-      sum: 31,
-      date: "2023-09-01",
-      fontFamily: "Impact, Chicago",
-      fontSize: "50px",
-      textTransform: "uppercase",
     },
     "Demi Singleton": {
       sum: 30,
@@ -89,12 +75,6 @@ const gallery = {
       fontFamily: "didot",
       fontSize: "46px",
       letterSpacing: "-1.8px",
-    },
-    "Mary Elizabeth Winstead": {
-      sum: 11,
-      date: "2020-04-01",
-      fontSize: "50px",
-      fontWeight: "normal",
     },
     "Odeya Rush": {
       sum: 16,
@@ -238,13 +218,7 @@ const gallery = {
       sum: 15,
       date: "2023-04-01",
     },
-    "Shôw Kasamatsu": {
-      sum: 8,
-      date: "2022-08-01",
-      fontFamily: "Arial Black",
-      fontSize: "18pt",
-    },
-    "Scoot McNairy 2": {
+    "Scoot McNairy": {
       sum: 25,
       date: "2022-11-01",
       fontFamily: "junicode",
@@ -257,25 +231,10 @@ const gallery = {
       fontSize: "40px",
       letterSpacing: "-0.02em",
     },
-    "Adam Scott": {
-      sum: 19,
-      date: "2022-06-01",
-      fontFamily: "didot",
-      fontSize: "48px",
-      textTransform: "uppercase",
-    },
     "Charlie Vickers": {
       sum: 13,
       date: "2022-09-01",
       fontFamily: "junicode",
-      textTransform: "uppercase",
-    },
-    "Tosin Cole": {
-      sum: 17,
-      date: "2022-09-01",
-      fontFamily: "Advent Pro",
-      fontSize: "45px",
-      letterSpacing: "2.1px",
       textTransform: "uppercase",
     },
     "Himesh Patel": {
@@ -284,11 +243,6 @@ const gallery = {
       fontFamily: "Fino Sans",
       fontSize: "104px",
       textTransform: "uppercase",
-    },
-    "Peter Sarsgaard": {
-      sum: 12,
-      date: "2021-12-01",
-      fontFamily: "Playfair Display",
     },
     "Max Minghella": {
       sum: 16,
@@ -311,30 +265,11 @@ const gallery = {
       textTransform: "uppercase",
       fontWeight: "normal",
     },
-    "Scoot McNairy": {
-      sum: 4,
-      date: "2015-06-01",
-    },
-    "Stephan James": {
-      sum: 13,
-      date: "2018-08-01",
-      fontFamily: "junicode",
-      textTransform: "uppercase",
-      letterSpacing: "0.4px",
-      fontStyle: "italic",
-    },
     "Taylor Zakhar Perez": {
       sum: 30,
       date: "2020-08-01",
       fontFamily: "didot",
       fontSize: "40px",
-      textTransform: "uppercase",
-    },
-    "Brandon Flynn": {
-      sum: 21,
-      date: "2020-07-01",
-      fontFamily: "Kumar One",
-      fontSize: "36px",
       textTransform: "uppercase",
     },
     "Billy Magnussen": {
@@ -582,7 +517,7 @@ function renderMainView() {
   clearContainer(main);
   navigation.style.display = "block";
 
-  Object.keys(gallery).forEach((sectionKey) => {
+  for (const sectionKey of Object.keys(gallery)) {
     const recentSection = document.createElement("div");
     recentSection.className = "recent_section";
 
@@ -590,16 +525,15 @@ function renderMainView() {
     sectionButton.className = "section_button";
     sectionButton.dataset.section = sectionKey;
     const buttonImage = document.createElement("img");
-    if (isSpecialSection(sectionKey)) {
-      buttonImage.className = "special_logo";
-      buttonImage.src = `${basicLink}special-logo-white.png`;
-      buttonImage.alt = "Special Logo";
-      sectionButton.appendChild(buttonImage);
-    } else {
-      buttonImage.className = "logo";
-      buttonImage.src = logo;
-      buttonImage.alt = "Logo";
-      sectionButton.appendChild(buttonImage);
+    buttonImage.className = isSpecialSection(sectionKey)
+      ? "special_logo"
+      : "logo";
+    buttonImage.src = isSpecialSection(sectionKey)
+      ? `${basicLink}special-logo-white.png`
+      : logo;
+    buttonImage.alt = "Logo";
+    sectionButton.appendChild(buttonImage);
+    if (!isSpecialSection(sectionKey)) {
       const text = document.createTextNode(sectionKey);
       sectionButton.appendChild(text);
     }
@@ -607,17 +541,15 @@ function renderMainView() {
     const sectionList = document.createElement("ul");
     sectionList.className = "section_list";
 
-    const items = Object.keys(gallery[sectionKey]).slice(0, 3);
-    items.forEach((itemName) => {
+    for (const itemName of Object.keys(gallery[sectionKey]).slice(0, 3)) {
       sectionList.appendChild(createCoverListItem(itemName, sectionKey));
-    });
+    }
 
     recentSection.appendChild(sectionButton);
     recentSection.appendChild(sectionList);
     main.appendChild(recentSection);
-  });
-}
-
+  }
+} // Создание одной большой секции, когда нажата главная кнопка
 function renderSectionView(activeSection) {
   clearContainer(main);
   navigation.style.display = "none";
@@ -625,73 +557,68 @@ function renderSectionView(activeSection) {
   const sectionFullTitle = document.createElement("div");
   sectionFullTitle.className = "section_full_title";
   if (isSpecialSection(activeSection)) {
-    sectionFullTitle.appendChild(
-      Object.assign(document.createElement("img"), {
-        src: `${basicLink}special-logo-black.jpg`,
-        alt: "Special Logo",
-        className: "section_full_logo",
-      })
-    );
+    const img = document.createElement("img");
+    img.src = `${basicLink}special-logo-black.jpg`;
+    img.alt = "Special Logo";
+    img.className = "section_full_logo";
+    sectionFullTitle.appendChild(img);
   } else {
-    sectionFullTitle.appendChild(
-      Object.assign(document.createElement("h2"), {
-        textContent: activeSection,
-      })
-    );
+    const h2 = document.createElement("h2");
+    h2.textContent = activeSection;
+    sectionFullTitle.appendChild(h2);
   }
 
   const sectionFullList = document.createElement("ul");
   sectionFullList.className = "section_full_list";
 
-  Object.keys(gallery[activeSection]).forEach((itemName) => {
+  for (const itemName of Object.keys(gallery[activeSection])) {
     sectionFullList.appendChild(createCoverListItem(itemName, activeSection));
-  });
+  }
 
   main.appendChild(sectionFullTitle);
   main.appendChild(sectionFullList);
 
-  // Прокрутка наверх
   window.scrollTo({ top: 0, behavior: "auto" });
-}
-
+} // Создание отдельных секций при нажатии навигационных кнопок
 function setupEventListeners() {
   const headerButton = document.querySelector(".header_button");
-  const navigationButtons = document.querySelectorAll(".navigation_button");
 
-  // Обработчик для header_button
+  function resetActiveButtons() {
+    headerButton.classList.remove("button-is_active");
+    headerButton.disabled = false;
+
+    document.querySelectorAll("[data-section]").forEach((btn) => {
+      btn.classList.remove("button-is_active");
+      btn.disabled = false;
+    });
+  }
+
   headerButton.addEventListener("click", () => {
+    if (headerButton.classList.contains("button-is_active")) return;
+
+    resetActiveButtons();
     headerButton.classList.add("button-is_active");
-    navigationButtons.forEach((btn) =>
-      btn.classList.remove("button-is_active")
-    );
+    headerButton.disabled = true;
     renderMainView();
   });
 
-  // Обработчики для кнопок навигации
-  navigationButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      headerButton.classList.remove("button-is_active");
-      button.classList.add("button-is_active");
-
-      const activeSection = button.dataset.section;
-      renderSectionView(activeSection);
-    });
-  });
-
-  // Обработчики для section_button внутри recent_section (если они будут добавлены динамически)
   document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("section_button")) {
-      headerButton.classList.remove("button-is_active");
-      navigationButtons.forEach((btn) =>
-        btn.classList.remove("button-is_active")
-      );
-      event.target.classList.add("button-is_active");
+    const target = event.target.closest("button[data-section]");
+    if (
+      !target ||
+      target.disabled ||
+      target.classList.contains("button-is_active")
+    )
+      return;
 
-      const activeSection = event.target.dataset.section;
-      renderSectionView(activeSection);
-    }
+    resetActiveButtons();
+    target.classList.add("button-is_active");
+    target.disabled = true;
+
+    const activeSection = target.dataset.section;
+    renderSectionView(activeSection);
   });
-}
+} // Обработчик кликов на главную кнопку и кнопки навигации
 
 for (const img of document.querySelectorAll("img.logo")) {
   img.src = logo;
